@@ -1,6 +1,6 @@
-# AI USA Lightbox
+# AIUSA Lightbox
 
-This project adds lightbox to page
+This project adds a configurable lightbox to AIUSA homepage ( https://www.amnestyusa.org/ )
 
 ## Setup
 
