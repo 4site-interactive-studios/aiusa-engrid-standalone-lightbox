@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src/index.js",
+    "website-lightbox": "./src/index.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
