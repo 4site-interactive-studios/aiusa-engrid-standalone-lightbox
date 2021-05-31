@@ -20,7 +20,7 @@ This project adds a configurable lightbox to AIUSA homepage ( https://www.amnest
     trigger: 1000 // Trigger Lightbox after 1000 (1 second)
   };
 </script>
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="website-lightbox.js"></script>
 ```
 
 ## Development
