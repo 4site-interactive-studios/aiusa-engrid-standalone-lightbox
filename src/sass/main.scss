@@ -26,6 +26,7 @@ img {
   overflow-y: hidden;
   transition: opacity 0.2s linear;
   font-family: "AmnestyTradeGothic", sans-serif;
+  z-index: 9999999;
 
   .lightbox-content {
     position: relative;
@@ -86,12 +87,15 @@ img {
 
   h1 {
     font-size: 32px;
-    font-family: "AmnestyTradeGothicBdCn", sans-serif;
+    line-height: normal;
+    margin-bottom: 4px;
+    font-family: "AmnestyTradeGothicCn", Arial, sans-serif;
     text-transform: uppercase;
   }
 
   p {
     margin-bottom: 7px;
+    font-size: 16px;
   }
 
   p.italic {
@@ -118,6 +122,7 @@ img {
     text-transform: uppercase;
     border: 0;
     cursor: pointer;
+    font-family: "AmnestyTradeGothicCn", Arial, sans-serif;
   }
 
   button#lightbox-submit {
