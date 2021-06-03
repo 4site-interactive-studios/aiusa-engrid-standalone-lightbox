@@ -19,8 +19,10 @@ body.insertAdjacentHTML('afterbegin', `
         <h1>${options.title}</h1>
         <p>${options.paragraph}</p>
         <form action="https://act.amnestyusa.org/page/9082/subscribe/1?ac=LIGHTBOXBUTTON" method="get">
-          <input name="supporter.firstName" type="text" placeholder="First Name" id="lightbox-first-name" role="input">
-          <input name="supporter.emailAddress" type="text" placeholder="Email" id="lightbox-email" role="input">
+          <label for="lightbox-first-name" class="visuallyhidden">First Name</label>
+          <input name="supporter.firstName" type="text" placeholder="First Name" id="lightbox-first-name" role="input" required>
+          <label for="lightbox-last-name" class="visuallyhidden">Last Name</label>
+          <input name="supporter.emailAddress" type="email" placeholder="Email" id="lightbox-email" role="input" required>
           <button id="lightbox-submit" type="submit" value="Act Now" role="input">${options.button}</button>
         </form>
         <p class="italic">${options.info}</p>
