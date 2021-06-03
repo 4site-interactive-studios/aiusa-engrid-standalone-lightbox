@@ -33,11 +33,13 @@ img {
     display: flex;
     background: #FFFFFF;
     width: 100%;
-    max-width: 800px;
+    max-width: 340px;
     padding: 12px;
+    margin: 20px;
 
-    @media (max-width: 840px) {
-      margin: 20px;
+    @media (min-width: 840px) {
+      margin: 0;
+      max-width: 800px;
     }
   }
 
@@ -55,7 +57,7 @@ img {
     left: 0;
     // display: none;
 
-    @media (min-width: 640px) {
+    @media (min-width: 840px) {
       top: 0;
     }
   }
@@ -63,13 +65,13 @@ img {
   .container-image {
     display: none;
 
-    @media (min-width: 640px) {
+    @media (min-width: 840px) {
       display: block;
     }
 
-    @media (max-width: 840px) {
-      flex-shrink: 2;
-    }
+    // @media (max-width: 840px) {
+    //   flex-shrink: 2;
+    // }
   }
 
   .container-form {
@@ -80,7 +82,7 @@ img {
     margin: 0 20px;
     font-size: 16px;
 
-    @media (min-width: 640px) {
+    @media (min-width: 840px) {
       margin: 0 50px;
     }
   }
