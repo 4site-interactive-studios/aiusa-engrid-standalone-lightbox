@@ -18,13 +18,7 @@ body.insertAdjacentHTML('afterbegin', `
       <div class="container-form">
         <h1>${options.title}</h1>
         <p>${options.paragraph}</p>
-        <form action="https://act.amnestyusa.org/page/9082/subscribe/1?ac=LIGHTBOXBUTTON" method="get">
-          <label for="lightbox-first-name" class="visuallyhidden">First Name</label>
-          <input name="supporter.firstName" type="text" placeholder="First Name" id="lightbox-first-name" role="input" required>
-          <label for="lightbox-last-name" class="visuallyhidden">Last Name</label>
-          <input name="supporter.emailAddress" type="email" placeholder="Email" id="lightbox-email" role="input" required>
-          <button id="lightbox-submit" type="submit" value="Act Now" role="input">${options.button}</button>
-        </form>
+        ${options.iframe}
         <p class="italic">${options.info}</p>
       </div>
     </div>
@@ -82,6 +76,44 @@ const setLightbox = () => {
       closeLightbox();
     }
   });
+
+  function getFrameByEvent(event) {
+    return [].slice
+      .call(document.getElementsByTagName("iframe"))
+      .filter(function (iframe) {
+        return iframe.contentWindow === event.source;
+      })[0];
+  }
+
+  window.onmessage = (e) => {
+    var iframe = getFrameByEvent(e);
+    if (iframe) {
+      if (e.data.hasOwnProperty("frameHeight")) {
+        iframe.style.display = "block";
+        iframe.style.height = `${e.data.frameHeight}px`;
+      } else if (e.data.hasOwnProperty("scroll") && e.data.scroll > 0) {
+        const elDistanceToTop =
+          window.pageYOffset + iframe.getBoundingClientRect().top;
+        let scrollTo = elDistanceToTop + e.data.scroll;
+  
+        window.scrollTo({
+          top: scrollTo,
+          left: 0,
+          behavior: "smooth",
+        });
+        console.log("Scrolling Window To", scrollTo);
+      }
+    }
+  };
+  
+  window.onload = e => {
+    let frames = document.getElementsByClassName('en-iframe');
+    for(let i=0; i<frames.length; i++){
+      let src = frames[i].getAttribute('data-src');
+      frames[i].setAttribute('src',src);
+    }
+  }
+
 };
 setLightbox();
 
