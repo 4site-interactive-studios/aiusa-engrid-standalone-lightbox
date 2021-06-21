@@ -85,7 +85,7 @@ const setLightbox = () => {
       })[0];
   }
 
-  window.onmessage = (e) => {
+  window.onmessage = (e) => {    
     var iframe = getFrameByEvent(e);
     if (iframe) {
       if (e.data.hasOwnProperty("frameHeight")) {
@@ -102,6 +102,13 @@ const setLightbox = () => {
           behavior: "smooth",
         });
         console.log("Scrolling Window To", scrollTo);
+      }
+
+      if (e.data.hasOwnProperty("pageNumber") && e.data.hasOwnProperty("pageCount")) {
+        if (e.data.pageNumber && e.data.pageCount && e.data.pageNumber == e.data.pageCount) {
+          closeLightbox();
+          crumbs.set(options.cookie_name, 1, { type: "month", value: 12, }); // Create one year cookie
+        }
       }
     }
   };
