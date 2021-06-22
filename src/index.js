@@ -106,7 +106,6 @@ const setLightbox = () => {
 
       if (e.data.hasOwnProperty("pageNumber") && e.data.hasOwnProperty("pageCount")) {
         if (e.data.pageNumber && e.data.pageCount && e.data.pageNumber == e.data.pageCount) {
-          closeLightbox();
           crumbs.set(options.cookie_name, 1, { type: "month", value: 12, }); // Create one year cookie
         }
       }
