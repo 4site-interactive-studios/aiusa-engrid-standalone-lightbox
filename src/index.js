@@ -5,21 +5,41 @@ import { crumbs } from "./crumbs";
 
 const body = document.querySelector("body");
 
+let image = '';
+if (options.imageURL) {
+  image += `<img src="${options.imageURL}" />`;
+}
+let logo = '';
+if (options.logoURL) {
+  logo += `<img src="${options.logoURL}" />`;
+}
+
+let content = '';
+if (options.title) {
+  content += `<h1>${options.title}</h1>`;
+}
+if (options.paragraph) {
+  content += `<p>${options.paragraph}</p>`;
+}
+if (options.iframe) {
+  content += `${options.iframe}`;
+}
+if (options.info) {
+  content += `<p class="italic">${options.info}</p>`;
+}
+
 body.insertAdjacentHTML('afterbegin', `
   <div class="lightbox hidden" style="display: none;">
     <div class="lightbox-content">
       <div class="close-btn"></div>
       <div class="logo">
-        <img src="${options.logoURL}" />
+        ${logo}
       </div>
       <div class="container-image">
-        <img src="${options.imageURL}" />
+        ${image}
       </div>
       <div class="container-form">
-        <h1>${options.title}</h1>
-        <p>${options.paragraph}</p>
-        ${options.iframe}
-        <p class="italic">${options.info}</p>
+        ${content}
       </div>
     </div>
   </div>`
@@ -108,6 +128,10 @@ const setLightbox = () => {
         if (e.data.pageNumber && e.data.pageCount && e.data.pageNumber == e.data.pageCount) {
           crumbs.set(options.cookie_name, 1, { type: "month", value: 12, }); // Create one year cookie
         }
+      }
+
+      if (e.data.hasOwnProperty("close") && e.data.close) {
+        closeLightbox();
       }
     }
   };
