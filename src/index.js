@@ -78,7 +78,8 @@ const setLightbox = () => {
   const lightbox = document.querySelector(".lightbox");
 
   const lightBoxClose = document.querySelector(".close-btn");
-  lightBoxClose && lightBoxClose.addEventListener("click", closeLightbox);
+  lightBoxClose &&
+    lightBoxClose.addEventListener("click", () => closeLightbox(lightbox));
 
   const submitBtn = document.querySelector("#lightbox-submit");
   submitBtn &&
@@ -110,7 +111,7 @@ const setLightbox = () => {
 
   lightbox.addEventListener("click", (e) => {
     if (e.target == lightbox) {
-      closeLightbox();
+      closeLightbox(lightbox);
     }
   });
 
@@ -155,14 +156,14 @@ const setLightbox = () => {
       }
 
       if (e.data.hasOwnProperty("close") && e.data.close) {
-        closeLightbox();
+        closeLightbox(lightbox);
       }
     }
   };
 };
 setLightbox();
 
-function closeLightbox() {
+function closeLightbox(lightbox) {
   lightbox.classList.remove("visible");
   lightbox.classList.add("hidden");
   body.style.overflow = "auto";
